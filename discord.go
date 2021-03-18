@@ -17,15 +17,15 @@ const (
 )
 
 var (
-	defaultScopes   = []string{"identify"}
-	defaultEndpoint = oauth2.Endpoint{
+	Endpoint = oauth2.Endpoint{
 		AuthURL:  "https://discord.com/api/oauth2/authorize",
 		TokenURL: "https://discord.com/api/oauth2/token",
 	}
 
-	defaultUserAgent = fmt.Sprintf("DiscordBot (%s, %s)", repoURL, Version)
-
 	ErrMissingRequiredArgument = errors.New("discord: missing a required argument")
+
+	defaultScopes    = []string{"identify"}
+	defaultUserAgent = fmt.Sprintf("DiscordBot (%s, %s)", repoURL, Version)
 )
 
 // Discord is an API client.
@@ -67,7 +67,7 @@ func (d *Discord) defaults() error {
 
 	if d.userConfig.Endpoint.AuthURL == "" ||
 		d.userConfig.Endpoint.TokenURL == "" {
-		d.userConfig.Endpoint = defaultEndpoint
+		d.userConfig.Endpoint = Endpoint
 	}
 
 	if d.userConfig.ClientID == "" ||
