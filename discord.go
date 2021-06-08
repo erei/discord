@@ -1,3 +1,4 @@
+// Package discord partially implements Discord's HTTP API to streamline the OAuth2 flow for consumers.
 package discord
 
 import (
@@ -9,23 +10,31 @@ import (
 	"golang.org/x/oauth2"
 )
 
-// Package discord partially implements Discord's HTTP API to streamline the OAuth2 flow for consumers.
-
 const (
 	Version = "v0.1.0"
 	repoURL = "https://github.com/erei/discord"
 )
 
 var (
+	// Endpoint is Discord's API endpoint for OAuth2.
 	Endpoint = oauth2.Endpoint{
 		AuthURL:  "https://discord.com/api/oauth2/authorize",
 		TokenURL: "https://discord.com/api/oauth2/token",
 	}
 
+	// ErrMissingRequiredArgument is returned when a required argument is missing
 	ErrMissingRequiredArgument = errors.New("discord: missing a required argument")
 
 	defaultScopes    = []string{"identify"}
 	defaultUserAgent = fmt.Sprintf("DiscordBot (%s, %s)", repoURL, Version)
+)
+
+const (
+	apiVersion = "v8"
+
+	root = "https://discord.com/api/" + apiVersion
+
+	rootCDN = "https://cdn.discordapp.com"
 )
 
 // Discord is an API client.

@@ -6,14 +6,6 @@ import (
 	"net/http"
 )
 
-const (
-	apiVersion = "v8"
-
-	root = "https://discord.com/api/" + apiVersion
-
-	rootCDN = "https://cdn.discordapp.com"
-)
-
 // User is a partial definition of a Discord User defined by the API.
 type User struct {
 	ID            string `json:"id"`
