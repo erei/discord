@@ -34,7 +34,7 @@ const (
 
 	root = "https://discord.com/api/" + apiVersion
 
-	rootCDN = "https://cdn.discordapp.com"
+	rootCDN = "https://cdn.discordapp.com/"
 )
 
 // Discord is an API client.
